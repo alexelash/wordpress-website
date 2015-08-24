@@ -3,8 +3,8 @@ Contributors: kylephillips
 Donate link: http://nestedpages.com/
 Tags: pages, admin, nested, tree view, page tree, sort, quick edit, structure
 Requires at least: 3.8
-Tested up to: 4.2
-Stable tag: 1.3.14
+Tested up to: 4.3
+Stable tag: 1.4.0
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -88,6 +88,16 @@ If you have WordPress SEO by Yoast installed, your page score indicators are sho
 7. The Nested Pages interface can be enabled on a per-post-type basis, with customizable options for each type.
 
 == Changelog ==
+
+= 1.4.1 =
+* Bug fix in quick edit where child pages display parent row data on update.
+
+= 1.4.0 =
+* Clone/Duplicate functionality added - click the "clone" button in a row to clone/duplicate a post or page
+* Bug fix when attempting to trash Advanced Custom Field field groups (Thanks to Ben Plum)
+* Javascript rewritten for more future-friendly updates and feature builds
+* Draft filter added to list
+* Tested and confirmed WordPress 4.3 compatibility
 
 = 1.3.15 =
 * Minor Bug fixes and optimizations

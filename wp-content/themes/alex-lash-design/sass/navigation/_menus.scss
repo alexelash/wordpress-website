@@ -3,6 +3,9 @@
 	display: block;
 	float: left;
 	width: 100%;
+	
+	@include opacity(0);
+	@include transition(opacity 0.5s ease);
 
 	ul {
 		display: none;
@@ -11,16 +14,9 @@
 		padding-left: 0;
 
 		ul {
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-			float: left;
-			position: absolute;
-			top: 1.5em;
-			left: -999em;
 			z-index: 99999;
 
 			ul {
-				left: -999em;
-				top: 0;
 			}
 
 			li {
@@ -31,11 +27,12 @@
 			}
 
 			a {
-				width: 200px;
+				@include transition(0.25s color ease);
 			}
 
 			:hover > a,
 			.focus > a {
+				@include transition(1s color ease);
 			}
 
 			a:hover,

@@ -11,16 +11,29 @@
 
 ?>
 
-	</div><!-- #content -->
-
-	<footer id="colophon" class="site-footer" role="contentinfo">
+	<footer class="site-footer" role="contentinfo">
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'alex-lash-design' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'alex-lash-design' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'alex-lash-design' ), 'alex-lash-design', '<a href="http://lash.design" rel="designer">Alexandra Lash</a>' ); ?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+			<?php 
+				if (have_rows('social_media_icons', 'option'); {
+					echo "<ul class='social-media-links'>";
+					while ( have_rows('social_media_icons') ) : the_row();
+						$title = get_sub_field('display_title');
+						$link = get_sub_field('external_link');
+
+						echo "<li class='social-media-link'>";
+							echo "<a href='$link'>$title</a>";
+						echo "</li>";
+			    endwhile;
+					echo "</ul>";
+				}
+			?>
+
+			<div class="email_address">
+				
+			</div>
+			<div class="insert-quirky-statement-here"></div>
+		</div>
+	</footer>
 
 <?php wp_footer(); ?>
 
