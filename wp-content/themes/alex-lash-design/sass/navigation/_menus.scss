@@ -46,7 +46,11 @@
 		}
 	}
 	li {
-		font-weight: 600;
+		font-family: $font__secondary;
+		font-size: 0.85rem;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-weight: 300;
 		list-style-type: none;
 		display: inline-block;
 		position: relative;

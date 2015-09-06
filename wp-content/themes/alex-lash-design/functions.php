@@ -9,6 +9,9 @@
 if( function_exists('acf_add_options_page') ) {
     acf_add_options_page( $page );
 }
+function pp($var) { 
+	print '<pre>'; print_r($var); print '</pre>'; 
+}
 
 $page = array(
 	/* (string) The title displayed on the options page. Required. */

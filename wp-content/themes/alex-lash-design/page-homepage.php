@@ -30,9 +30,11 @@ get_header(); ?>
 				$page_color = get_field('page_color', $post->ID);
 				$page_link = get_the_permalink();
 				$project_ID = $post -> post_name;
+				$featured_img = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ),'full')[0];
+				$featured_img_location = get_posts(array('p' => get_post_thumbnail_id( $post->ID ), 'post_type' => 'attachment'))[0]->post_content;
 
 				echo "<li id='$project_ID' class='project'>";
-					echo "<a href='$page_link' class='project-link' data-bgimg='' data-bgcolor='$page_color'>";
+					echo "<a href='$page_link' class='project-link' data-bgimg='$featured_img' data-bgcolor='$page_color' data-bglocation='$featured_img_location'>";
 						echo "<h2 class='project-title'>$title</h2>";
 						echo "<h3 class='project-subtitle'>$subtitle</h2>";
 					echo "</a>";

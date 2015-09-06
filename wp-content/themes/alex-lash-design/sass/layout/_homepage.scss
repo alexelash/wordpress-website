@@ -12,7 +12,6 @@ body.home {
 			list-style-type: none;
 			margin: 0 0 0 1.65rem;
 			padding-left: 0;
-			
 
 		  @keyframes fade_in { 
 				0% { @include opacity(0); }
@@ -53,11 +52,13 @@ body.home {
 
 				&:hover {
 					padding-left: 1rem;
+					text-shadow: 	1px 1px 1px #222, 
+               					2px 3px 5px rgba(0,0,0,0.35); 
 					@include opacity(1);
 
 					&:before {
 						height: 3.1rem;
-						background-color: rgba(256,256,256,0.5);
+						background-color: rgba(255,255,255,0.5);
 						bottom: 0;
 					}
 					
