@@ -7,11 +7,31 @@
  * @package Alex Lash Design
  */
 if( function_exists('acf_add_options_page') ) {
-    acf_add_options_page( $page );
+	acf_add_options_page( $page );
 }
 function pp($var) { 
 	print '<pre>'; print_r($var); print '</pre>'; 
 }
+function siblings($link) {
+	global $post;
+	$siblings = get_pages('child_of='.$post->post_parent.'&parent='.$post->post_parent.'&sort_column=menu_order');
+	foreach ($siblings as $key=>$sibling){
+		if ($post->ID == $sibling->ID){
+			$ID = $key;
+		}    
+	}
+
+	if( $ID == 0 ){
+		$closest = array('before'=>get_permalink($siblings[count($siblings)-1]->ID),'after'=>get_permalink($siblings[$ID+1]->ID));  
+	}elseif( $ID == count($siblings)-1 ){
+		$closest = array('before'=>get_permalink($siblings[$ID-1]->ID),'after'=>get_permalink($siblings[0]->ID));
+	}else{
+		$closest = array('before'=>get_permalink($siblings[$ID-1]->ID),'after'=>get_permalink($siblings[$ID+1]->ID));   
+	}
+
+	if ($link == 'before' || $link == 'after') { echo $closest[$link]; } else { return $closest; } 
+}
+
 
 $page = array(
 	/* (string) The title displayed on the options page. Required. */

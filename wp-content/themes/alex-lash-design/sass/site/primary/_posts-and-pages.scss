@@ -26,3 +26,27 @@
 	clear: both;
 	margin: 0 0 1.5em;
 }
+body.page-child {
+	padding: 2rem;
+
+	.entry-header {
+		position: relative;
+		height: 92vh;
+		width: 100%;
+		display: block;
+
+		.entry-title-container {
+			position: absolute;
+			left: 1rem;
+			bottom: 1rem;
+		}
+
+		.entry-header-container {
+			height: 100%;
+			background-color: rgba(0,0,0,0.1);
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center center;
+		}
+	}
+}

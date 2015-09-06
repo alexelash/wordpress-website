@@ -1,3 +1,10 @@
+nav {
+	font-family: $font__secondary;
+	font-size: 0.85rem;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 400;
+}
 .main-navigation {
 	display: inline-block;
 	height: auto;
@@ -46,16 +53,10 @@
 		}
 	}
 	li {
-		font-family: $font__secondary;
-		font-size: 0.85rem;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		font-weight: 300;
 		list-style-type: none;
 		display: inline-block;
 		position: relative;
 		margin: 0 0.85rem;
-		@include antialias();
 
 		&:hover > a,
 		&.focus > a {
@@ -89,7 +90,11 @@
 
 .comment-navigation,
 .posts-navigation,
-.post-navigation {
+.post-navigation,
+.pages-navigation {
+	border-top: 1px solid rgba(0,0,0,0.2);
+	padding: 0.5rem 0 0;
+	margin: 1rem 0;
 
 	.site-main & {
 		margin: 0 0 1.5em;
@@ -105,5 +110,13 @@
 		float: right;
 		text-align: right;
 		width: 50%;
+	}
+	a {
+		@include transition(0.25s color ease);
+	}
+
+	:hover > a,
+	.focus > a {
+		@include transition(1s color ease);
 	}
 }

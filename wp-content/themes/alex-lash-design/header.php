@@ -17,7 +17,7 @@
 		$text_color = get_field('text_color');
  	?>
 
-<html <?php language_attributes(); ?> style="background-color: <?php echo $page_color ?>; color: <?php echo $text_color ?>; fill: <?php echo $text_color ?>;" data-origcolor="rgb(193,76,63)">
+<html <?php language_attributes(); ?> style="background-color: <?php echo $page_color ?>; color: <?php echo $text_color ?>; fill: <?php echo $text_color ?>;" data-origcolor="<?php echo $page_color ?>">
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">

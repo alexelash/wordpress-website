@@ -317,12 +317,14 @@ html {
 body {
   background: transparent;
   /* Fallback for when there is no custom background color defined. */
-  margin: 2rem; }
+  padding: 10rem 2rem 2rem 2rem; }
 
-header {
-  position: relative;
-  width: 100%;
-  margin-bottom: 2rem; }
+.site-header {
+  position: absolute;
+  top: 3rem;
+  right: 3rem;
+  left: 3rem;
+  z-index: 999; }
 
 blockquote, q {
   quotes: "" ""; }
@@ -450,6 +452,13 @@ a {
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
+nav {
+  font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", Helvetica, sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400; }
+
 .main-navigation {
   display: inline-block;
   height: auto;
@@ -484,17 +493,10 @@ a {
     .main-navigation ul li.focus > ul {
       left: auto; }
   .main-navigation li {
-    font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", Helvetica, sans-serif;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 300;
     list-style-type: none;
     display: inline-block;
     position: relative;
-    margin: 0 0.85rem;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; }
+    margin: 0 0.85rem; }
   .main-navigation a {
     display: block;
     text-decoration: none; }
@@ -510,22 +512,54 @@ a {
 
   .main-navigation ul {
     display: block; } }
-.site-main .comment-navigation, .site-main
-.posts-navigation, .site-main
-.post-navigation {
-  margin: 0 0 1.5em;
-  overflow: hidden; }
-.comment-navigation .nav-previous,
-.posts-navigation .nav-previous,
-.post-navigation .nav-previous {
-  float: left;
-  width: 50%; }
-.comment-navigation .nav-next,
-.posts-navigation .nav-next,
-.post-navigation .nav-next {
-  float: right;
-  text-align: right;
-  width: 50%; }
+.comment-navigation,
+.posts-navigation,
+.post-navigation,
+.pages-navigation {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 0 0;
+  margin: 1rem 0; }
+  .site-main .comment-navigation, .site-main
+  .posts-navigation, .site-main
+  .post-navigation, .site-main
+  .pages-navigation {
+    margin: 0 0 1.5em;
+    overflow: hidden; }
+  .comment-navigation .nav-previous,
+  .posts-navigation .nav-previous,
+  .post-navigation .nav-previous,
+  .pages-navigation .nav-previous {
+    float: left;
+    width: 50%; }
+  .comment-navigation .nav-next,
+  .posts-navigation .nav-next,
+  .post-navigation .nav-next,
+  .pages-navigation .nav-next {
+    float: right;
+    text-align: right;
+    width: 50%; }
+  .comment-navigation a,
+  .posts-navigation a,
+  .post-navigation a,
+  .pages-navigation a {
+    -webkit-transition: 0.25s color ease;
+    -moz-transition: 0.25s color ease;
+    -ms-transition: 0.25s color ease;
+    -o-transition: 0.25s color ease;
+    transition: 0.25s color ease; }
+  .comment-navigation :hover > a,
+  .comment-navigation .focus > a,
+  .posts-navigation :hover > a,
+  .posts-navigation .focus > a,
+  .post-navigation :hover > a,
+  .post-navigation .focus > a,
+  .pages-navigation :hover > a,
+  .pages-navigation .focus > a {
+    -webkit-transition: 1s color ease;
+    -moz-transition: 1s color ease;
+    -ms-transition: 1s color ease;
+    -o-transition: 1s color ease;
+    transition: 1s color ease; }
 
 /*--------------------------------------------------------------
 # Accessibility
@@ -642,6 +676,24 @@ a {
 .page-links {
   clear: both;
   margin: 0 0 1.5em; }
+
+body.page-child {
+  padding: 2rem; }
+  body.page-child .entry-header {
+    position: relative;
+    height: 92vh;
+    width: 100%;
+    display: block; }
+    body.page-child .entry-header .entry-title-container {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem; }
+    body.page-child .entry-header .entry-header-container {
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center; }
 
 /*--------------------------------------------------------------
 ## Asides
@@ -789,7 +841,7 @@ body.home main ul.projects {
       transition: 0.75s background-color ease, 0.35s height ease; }
     body.home main ul.projects li.project:hover {
       padding-left: 1rem;
-      text-shadow: 1px 1px 1px #222222, 2px 3px 5px rgba(0, 0, 0, 0.35);
+      text-shadow: 1px 1px 1px #222222, 2 px 3px 5px rgba(0, 0, 0, 0.35);
       opacity: 1;
       filter: alpha(opacity=100); }
       body.home main ul.projects li.project:hover:before {
