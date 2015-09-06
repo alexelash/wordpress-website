@@ -34,8 +34,8 @@
 			<div class="insert-quirky-statement-here"></div>
 		</div>
 	</footer>
+	<?php echo 'helo';?>
 
 <?php wp_footer(); ?>
-
 </body>
 </html>

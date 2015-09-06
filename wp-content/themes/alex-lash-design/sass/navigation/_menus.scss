@@ -1,17 +1,17 @@
 .main-navigation {
-	clear: both;
-	display: block;
-	float: left;
-	width: 100%;
-	
-	@include opacity(0);
-	@include transition(opacity 0.5s ease);
+	display: inline-block;
+	height: auto;
+	width: auto;
+	overflow: hidden;
+	opacity: 1;
+	position: absolute;
+	right: 0;
+	top: 0;
 
 	ul {
-		display: none;
-		list-style: none;
+		list-style-type: none;
 		margin: 0;
-		padding-left: 0;
+		padding: 0;
 
 		ul {
 			z-index: 99999;
@@ -46,8 +46,12 @@
 		}
 	}
 	li {
-		float: left;
+		font-weight: 600;
+		list-style-type: none;
+		display: inline-block;
 		position: relative;
+		margin: 0 0.85rem;
+		@include antialias();
 
 		&:hover > a,
 		&.focus > a {

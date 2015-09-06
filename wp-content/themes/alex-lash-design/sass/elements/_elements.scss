@@ -1,6 +1,8 @@
 html {
 	box-sizing: border-box;
 	margin: 0;
+
+	@include transition(0.5s background-color ease-in);
 }
 
 *,
@@ -14,6 +16,11 @@ body {
 	margin: 2rem;
 }
 
+header {
+	position: relative;
+	width: 100%;
+	margin-bottom: 2rem;
+}
 
 blockquote, q {
 	quotes: "" "";

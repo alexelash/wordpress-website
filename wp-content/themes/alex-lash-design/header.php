@@ -17,7 +17,7 @@
 		$text_color = get_field('text_color');
  	?>
 
-<html <?php language_attributes(); ?> style="background-color: <?php echo $page_color ?>; color: <?php echo $text_color ?>; fill: <?php echo $text_color ?>;">
+<html <?php language_attributes(); ?> style="background-color: <?php echo $page_color ?>; color: <?php echo $text_color ?>; fill: <?php echo $text_color ?>;" data-origcolor="rgb(193,76,63)">
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,8 +34,8 @@
 
 	<header class="site-header" role="banner">
 		<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php get_template_part('SVGs/inline', 'logo.svg'); ?></a></h1>
-		<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-		<nav id="site-navigation" class="main-navigation" role="navigation"><?php esc_html_e( 'Primary Menu', 'alex-lash-design' ); ?></button>
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+		<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"></button>
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'items_wrap' => '<ul id="%1$s">%3$s</ul>', 'depth' => 1, ) ); ?>
 		</nav>
 	</header>
