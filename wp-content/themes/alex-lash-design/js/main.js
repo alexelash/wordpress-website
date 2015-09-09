@@ -2,36 +2,48 @@ $(document).ready(function(){
 	initFullscrnHover();
 });
 function initFullscrnHover() {
-	$('.project').hover(function() {
-		$('html').css({
-			'background-color': $(this).find('a').data('bgcolor'),
-			'background-image': 'url('+$(this).find('a').data('bgimg')+')',
-			'background-position': $(this).find('a').data('bglocation')
+	$('.project').each(function() {
+		$(this).mouseenter(function() {
+			$('html').css({
+				'background-color': $(this).find('a').data('bgcolor')
+			});
+			$('.preview img').attr('src', ($(this).find('a').data('bgimg'))),
+			$('.preview').css({
+				'background-image': 'url('+$(this).find('a').data('bgimg')+')',
+				'background-position': $(this).find('a').data('bglocation'),
+				'background-size': $(this).find('a').data('bgsize')
+			})
+			imagesLoaded($('.preview img'), $('.preview'))
 		});
-	},function() {
-		$('html').css({
-			'background-color': $('html').data('origcolor'),
-			'background-image': '',
-			'background-position': ''
-		});	
+		$(this).mouseleave(function() {
+			$('html').css({
+				'background-color': $('html').data('origcolor')
+			});	
+			$('.preview img').attr('src', ''),
+			$('.preview').removeClass('isLoaded').css({
+				'background-image': '',
+				'background-position': ''
+			})
+		});
 	});
-
-
 	// ajaxifyThumbs();
 }
-function ajaxifyThumbs(theThumb) {
-	// $.ajax({
- //    type: 'POST',
- //    url: theThumb,
- //    // data: 'formName=register&penewuser='+newName+'',
- //    success: function(data){
- //        var usernameCount = data;
- //        if(1 == usernameCount){
- //            $('#penewuser').next('.error').css('display', 'inline');
- //        } else {
- //            $('#penewuser').next('.error').css('display', 'none');
- //        }
- //    },
- //    dataType: 'html'
-	// });
+
+function imagesLoaded(elem, container) {
+	container.imagesLoaded()
+  .always( function( instance ) {
+    // console.log('all images loaded');
+  })
+  .done( function( instance ) {
+    // console.log('all images successfully loaded');
+  })
+  .fail( function() {
+    // console.log('all images loaded, at least one is broken');
+  })
+  .progress( function( instance, image ) {
+  	// console.log(image)
+  	$(image.img).closest(container).addClass('isLoaded');
+    // var result = image.isLoaded ? 'loaded' : 'broken';
+    // console.log( 'image is ' + result + ' for ' + image.img.src );
+  });
 }

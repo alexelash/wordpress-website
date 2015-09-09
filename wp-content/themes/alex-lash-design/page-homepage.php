@@ -32,9 +32,11 @@ get_header(); ?>
 				$project_ID = $post -> post_name;
 				$featured_img = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ),'full')[0];
 				$featured_img_location = get_posts(array('p' => get_post_thumbnail_id( $post->ID ), 'post_type' => 'attachment'))[0]->post_content;
+				$featured_img_size = get_posts(array('p' => get_post_thumbnail_id( $post->ID ), 'post_type' => 'attachment'))[0]->post_excerpt;
+				// pp($featured_img_size);
 
 				echo "<li id='$project_ID' class='project'>";
-					echo "<a href='$page_link' class='project-link' data-bgimg='$featured_img' data-bgcolor='$page_color' data-bglocation='$featured_img_location'>";
+					echo "<a href='$page_link' class='project-link' data-bgimg='$featured_img' data-bgcolor='$page_color' data-bglocation='$featured_img_location' data-bgsize='$featured_img_size'>";
 						echo "<h2 class='project-title'>$title</h2>";
 						echo "<h3 class='project-subtitle'>$subtitle</h2>";
 					echo "</a>";
@@ -42,5 +44,6 @@ get_header(); ?>
 
 			endwhile; wp_reset_query(); ?>
 		</ul>
+		<div class='preview'><img class='loader-image' src=''></div>
 	</main><!-- #main -->
 <?php get_footer(); ?>
