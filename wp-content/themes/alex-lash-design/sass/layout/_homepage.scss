@@ -9,12 +9,14 @@ html {
 		// @include transition(2s opacity);
 
 		&:hover {
-			fill: white;
-			color: white;
+			fill: inherit;
+			color: inherit;
 		}
 		.site-title {
 			display: inline-block;
 			@include opacity(0.5);
+			z-index: 999;
+			
 		}
 		main {
 			.preview {
@@ -23,9 +25,9 @@ html {
 				right: 0; bottom: 0; top: 0; left: 0;
 				height: 100%;
 				width: 100%;
-				z-index: -1;
+				z-index: 0;
 				@include opacity(0);
-				// @include transition(1s opacity);
+				@include transition(1s opacity);
 
 				.loader-image {
 					display: none;
@@ -40,6 +42,7 @@ html {
 				margin: 0 0 0 1.65rem;
 				padding-left: 0;
 				z-index: 999;
+				position: relative;
 
 				li.project {
 					margin: 0;
@@ -78,6 +81,7 @@ html {
 
 					&:hover {
 						padding-left: 1rem;
+						color: inherit;
 						text-shadow: 	1px 1px 1px #222, 
 	               					2 px 3px 5px rgba(0,0,0,0.35); 
 						@include opacity(1);

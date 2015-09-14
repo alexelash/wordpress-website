@@ -26,6 +26,8 @@
 	clear: both;
 	margin: 0 0 1.5em;
 }
+
+// Projects
 body.page-child {
 	padding: 2rem;
 
@@ -34,19 +36,27 @@ body.page-child {
 		height: 92vh;
 		width: 100%;
 		display: block;
+		overflow: hidden;
+		background-color: rgba(0,0,0,0.1);
 
 		.entry-title-container {
 			position: absolute;
 			left: 1rem;
 			bottom: 1rem;
+
+			.entry-title,
+			.entry-subtitle {
+				text-shadow: 	0px 1px 1px rgba(0,0,0,0.8), 
+											2px 2px 5px rgba(0,0,0,0.5)
+			}
 		}
 
 		.entry-header-container {
-			height: 100%;
-			background-color: rgba(0,0,0,0.1);
-			background-size: contain;
+			height: 95%;
+			margin-top: 5%;
+			background-size: cover;
 			background-repeat: no-repeat;
-			background-position: center center;
+			background-position: top center;
 		}
 	}
 }

@@ -1,26 +1,42 @@
 $(document).ready(function(){
-	initFullscrnHover();
+	if ($(window).width()>680) initFullscrnHover();
+});
+
+$(window).load(function(){
+	imagesLoaded($('.gallery .image-container img.loader-image'), $('.gallery .image-container'));
 });
 function initFullscrnHover() {
 	$('.project').each(function() {
+		var origbgcolor = $('html').data('origcolor'),
+				origtxtcolor = $('html').data('origtextcolor'),
+				bgcolor = $(this).find('a').data('bgcolor'),
+				txtcolor = $(this).find('a').data('textcolor'),
+				bgimg = $(this).find('a').data('bgimg'),
+				bglocation = $(this).find('a').data('bglocation'),
+				bgsize = $(this).find('a').data('bgsize');
+
 		$(this).mouseenter(function() {
 			$('html').css({
-				'background-color': $(this).find('a').data('bgcolor')
+				'background-color': bgcolor,
+				'color': txtcolor,
+				'fill': txtcolor
 			});
-			$('.preview img').attr('src', ($(this).find('a').data('bgimg'))),
+			$('.preview img#'+$(this).attr('id')).attr('src', bgimg);
 			$('.preview').css({
-				'background-image': 'url('+$(this).find('a').data('bgimg')+')',
-				'background-position': $(this).find('a').data('bglocation'),
-				'background-size': $(this).find('a').data('bgsize')
-			})
-			imagesLoaded($('.preview img'), $('.preview'))
+				'background-position': bglocation,
+				'background-size': bgsize
+			});
+			imagesLoaded($('.preview img.loader-image#'+$(this).attr('id')), $('.preview'), bgimg)
 		});
 		$(this).mouseleave(function() {
 			$('html').css({
-				'background-color': $('html').data('origcolor')
+				'background-color': origbgcolor,
+				'color': origtxtcolor,
+				'fill': origtxtcolor
 			});	
 			$('.preview img').attr('src', ''),
 			$('.preview').removeClass('isLoaded').css({
+				'background-image': 'url()',
 				'background-image': '',
 				'background-position': ''
 			})
@@ -29,7 +45,7 @@ function initFullscrnHover() {
 	// ajaxifyThumbs();
 }
 
-function imagesLoaded(elem, container) {
+function imagesLoaded(elem, container, url) {
 	container.imagesLoaded()
   .always( function( instance ) {
     // console.log('all images loaded');
@@ -41,8 +57,12 @@ function imagesLoaded(elem, container) {
     // console.log('all images loaded, at least one is broken');
   })
   .progress( function( instance, image ) {
-  	// console.log(image)
-  	$(image.img).closest(container).addClass('isLoaded');
+  	if ($('body').hasClass('home')) {
+  		$(image.img).closest(container).css({
+				'background-image': 'url('+url+')',
+			});
+  	};
+		if ($(image.img).closest(container).css('background-url')!='') container.addClass('isLoaded');
     // var result = image.isLoaded ? 'loaded' : 'broken';
     // console.log( 'image is ' + result + ' for ' + image.img.src );
   });

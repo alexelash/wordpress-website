@@ -12,6 +12,7 @@
 		<?php 
 			$project_title = the_title(NULL,NULL,false);
 			$project_subtitle = get_field('subtitle',$post->ID);
+			$page_color = get_field('page_color',$post->ID);
 			$featured_img = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ),'full')[0];
 
 			echo "<div class='entry-header-container' style='background-image: url($featured_img);'>";
@@ -25,24 +26,88 @@
 
 	<div class="entry-content">
 		<?php 
+			echo "<div class='entry-information'>";
+				echo "<div class='entry-description'>";
+					echo get_the_content();
+				echo "</div>";
+				echo "<aside class='entry-details'>";
+					$direct_url = get_field('external_url',$post->ID);
+					$ext_link = file_get_contents(locate_template('SVGs/inline-ext_link.svg.php'));
+
+					if( have_rows('credits_rows') ) {
+						echo "<ul class='credits-list'>";
+						while( have_rows('credits_rows') ): the_row();
+							echo "<li class='credits-list-item'>";
+							if( get_row_layout() == 'art_direction' ) {
+								$link = get_sub_field('link');
+								$displayTitle = get_sub_field('art_director');
+								$ext_link = $link!=''?file_get_contents(locate_template('SVGs/inline-ext_link.svg.php')):'';
+
+								echo "<h4>Art Director</h4>";
+								echo "<a class='col_right' href='$link' title='$displayTitle'>$displayTitle $ext_link</a>";
+							}	
+							if( get_row_layout() == 'photography' ) {
+								$link = get_sub_field('link');
+								$displayTitle = get_sub_field('photographer');
+
+								echo "<h4>Photographer</h4>";
+								echo "<a class='col_right' href='$link' title='$displayTitle'>$displayTitle $ext_link</a>";
+							}	
+							if( get_row_layout() == 'recognition' ) {
+								$displayTitle = get_sub_field('award');
+
+								echo "<h4>Recognition</h4>";
+								echo "<div class='col_right'>$displayTitle</div>";
+							}		
+							if( get_row_layout() == 'design' ) {
+								$displayTitle = get_sub_field('designer');
+								$link = get_sub_field('link');
+
+								echo "<h4>Designer</h4>";
+								echo "<a class='col_right' href='$link' title='$displayTitle'>$displayTitle $ext_link</a>";
+							}								
+							echo "</li>";
+	   				endwhile;
+	    			echo "</ul>";
+	   			}
+
+	   			if ($direct_url!='') echo "<a class='col_right website-link' href='$direct_url'>View website $ext_link</a>";
+				echo "</aside>";
+			echo "</div>";
+
+
+
 			$row_num = 0;
 			if( have_rows('project_rows') ) {
 				while ( have_rows('project_rows') ) : the_row();
-					echo "<div class='row'>";
+					$row_type = get_row_layout();
+
+					echo "<div class='row $row_type'>";
 						if( get_row_layout() == 'image_block' ) {
 							$images = get_sub_field('images');
-							$i_num = 0;
-							foreach ($images as $i) {
-								$i_url = $i['url'];
-								$i_width = $i['width'];
-								$i_height = $i['height'];
+							$images_count = count($images);
 
-								echo "<div id='image-$i_num' class='image-container' style='background-image:$i_url;'>";
-									echo "<img class='loader-image' src='$i_url' width='$i_width' height='$i_height'/>";
-								echo "</div>";
+							echo "<div class='gallery gallery-columns-$images_count'>";
+								$avg_ratio = 0;
+								foreach ($images as $i) {
+									$i_num = 0;
+									$avg_ratio += $i['width']/$i['height'];
+								}
+								$avg_ratio = $avg_ratio/$images_count;
+								foreach ($images as $i) {
+									$i_url = $i['url'];
+									$i_alt = $i['alt'];
 
-								$i_num++;
-							}
+									echo "<div class='gallery-item' style='background-color: $page_color;'>";
+										echo "<div id='image-$i_num' class='image-container' style='background-image:url($i_url);'>";
+											$margin_ratio = (1/$avg_ratio-1)*100;
+											echo "<img class='loader-image' src='$i_url' width='$i_width' height='$i_height' style='display: none;' alt='$i_alt'/>";
+											echo "<img class='proportion-image' style='margin-top:$margin_ratio%' src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'/>";
+										echo "</div>";
+									echo "</div>";
+									$i_num++;
+								}
+							echo "</div>";
 						}
 						if( get_row_layout() == 'text_block' ) {
 							$body_text = get_sub_field('body');
@@ -54,11 +119,8 @@
 
 							echo $callout_text;
 						}
-						if( get_row_layout() == 'credits_block' ) {
-							// if 
-						}
+					
 					echo "</div>"; // End Row Div
-
 					$row_num++;
 				endwhile;
 			}

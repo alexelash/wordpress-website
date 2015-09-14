@@ -28,22 +28,30 @@ get_header(); ?>
 				$title = get_the_title();
 				$subtitle = strtolower(get_field('subtitle'));
 				$page_color = get_field('page_color', $post->ID);
+				$text_color = get_field('text_color', $post->ID);
 				$page_link = get_the_permalink();
-				$project_ID = $post -> post_name;
+				$project_name = $post -> post_name;
 				$featured_img = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ),'full')[0];
 				$featured_img_location = get_posts(array('p' => get_post_thumbnail_id( $post->ID ), 'post_type' => 'attachment'))[0]->post_content;
 				$featured_img_size = get_posts(array('p' => get_post_thumbnail_id( $post->ID ), 'post_type' => 'attachment'))[0]->post_excerpt;
 				// pp($featured_img_size);
 
-				echo "<li id='$project_ID' class='project'>";
-					echo "<a href='$page_link' class='project-link' data-bgimg='$featured_img' data-bgcolor='$page_color' data-bglocation='$featured_img_location' data-bgsize='$featured_img_size'>";
+				echo "<li id='$project_name' class='project'>";
+					echo "<a href='$page_link' class='project-link' data-bgimg='$featured_img' data-bgcolor='$page_color' data-textcolor='$text_color' data-bglocation='$featured_img_location' data-bgsize='$featured_img_size'>";
 						echo "<h2 class='project-title'>$title</h2>";
 						echo "<h3 class='project-subtitle'>$subtitle</h2>";
 					echo "</a>";
 				echo "</li>";
 
-			endwhile; wp_reset_query(); ?>
+			endwhile; ?>
 		</ul>
-		<div class='preview'><img class='loader-image' src=''></div>
+		<div class='preview'>
+			<?php 
+				while ( $projects->have_posts() ) : $projects->the_post();
+					$project_name = $post -> post_name;
+					echo "<img id='$project_name' class='loader-image' src=''>";
+				endwhile; wp_reset_query(); 
+			?>
+		</div>
 	</main><!-- #main -->
 <?php get_footer(); ?>

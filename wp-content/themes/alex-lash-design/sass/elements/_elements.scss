@@ -24,6 +24,74 @@ body {
 	z-index: 999;
 	// width: 100%;
 }
+.external-link {
+	stroke: inherit;
+	stroke-width: 20;
+	height: 0.7rem;
+	width: 0.7rem;
+	@include opacity(0.7);
+}
+.entry-header {
+	.entry-header-container {
+		height: 80%;
+		top: 20%;
+	
+
+		.entry-title-container {
+			position: absolute;
+			display: inline-block;
+			left:0; bottom: 1rem;
+			// text-align: center;
+			color: white;
+
+			.entry-title {
+				font-size: 2rem;
+			}
+			.entry-subtitle {
+				font-size: 1.5rem;
+
+				&:after {
+					// content: "^";
+					// display: inline-block;
+					// text-align: left;
+					// position: relative;
+					// font-style: normal;
+					// font-size: 3rem;
+					// line-height: 1rem;
+					// margin-left: 1rem;
+					// margin-bottom: 2rem;
+					// font-weight: 100;
+
+					// @include rotate(180);
+				}
+			}
+		}
+	}
+}
+.entry-content {
+	display: block;
+
+	.entry-information {
+		margin: 4rem 0;
+		
+		aside {
+			width: 20%;
+			position: relative;
+			display: inline-block;
+			font-family: $font__secondary;
+		}
+
+		.entry-description {
+			width:75%;
+			position: relative;
+			display: inline-block;
+			margin-right: 5%;
+			vertical-align: top;
+			padding-left: 1rem;
+		}
+	}
+}
+
 
 blockquote, q {
 	quotes: "" "";

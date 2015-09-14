@@ -12,6 +12,13 @@ if( function_exists('acf_add_options_page') ) {
 function pp($var) { 
 	print '<pre>'; print_r($var); print '</pre>'; 
 }
+
+function cc_mime_types($mimes) {
+  $mimes['svg'] = 'image/svg+xml';
+  return $mimes;
+}
+add_filter('upload_mimes', 'cc_mime_types');
+
 function siblings($link) {
 	global $post;
 	$siblings = get_pages('child_of='.$post->post_parent.'&parent='.$post->post_parent.'&sort_column=menu_order');

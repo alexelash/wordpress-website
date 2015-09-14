@@ -1,5 +1,9 @@
 p {
 	margin-bottom: 1.5rem;
+	font-family: $font__secondary;
+	line-height: $font__line-height-body;
+	font-weight: 300;
+	font-size: 0.95rem;
 }
 
 dfn, cite, em, i {

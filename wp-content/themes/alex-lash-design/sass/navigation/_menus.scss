@@ -1,100 +1,118 @@
 nav {
 	font-family: $font__secondary;
-	font-size: 0.85rem;
+	font-size: 0.75rem;
 	text-transform: uppercase;
-	letter-spacing: 1px;
+	letter-spacing: 2px;
 	font-weight: 400;
-}
-.main-navigation {
-	display: inline-block;
-	height: auto;
-	width: auto;
 	overflow: hidden;
-	opacity: 1;
-	position: absolute;
-	right: 0;
-	top: 0;
+}
+	.top-right {
+		display: block;
+		position: absolute;
+		right: 0;
+		top: 0;
 
-	ul {
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
+	.main-navigation {
+		display: inline-block;
+		height: auto;
+		width: auto;
+		overflow: hidden;
+		opacity: 1;
 
 		ul {
-			z-index: 99999;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
 
 			ul {
-			}
+				z-index: 99999;
 
-			li {
-				&:hover > ul,
-				&.focus > ul {
-					left: 100%;
+				ul {
+				}
+
+				li {
+					&:hover > ul,
+					&.focus > ul {
+						left: 100%;
+					}
+				}
+
+				a {
+					@include transition(0.25s color ease);
+				}
+
+				:hover > a,
+				.focus > a {
+					@include transition(1s color ease);
+				}
+
+				a:hover,
+				a.focus {
 				}
 			}
 
-			a {
-				@include transition(0.25s color ease);
-			}
-
-			:hover > a,
-			.focus > a {
-				@include transition(1s color ease);
-			}
-
-			a:hover,
-			a.focus {
+			li:hover > ul,
+			li.focus > ul {
+				left: auto;
 			}
 		}
+		li {
+			list-style-type: none;
+			display: inline-block;
+			position: relative;
+			margin: 0 0.85rem;
 
-		li:hover > ul,
-		li.focus > ul {
-			left: auto;
+			&:hover > a,
+			&.focus > a {
+			}
+		}
+		a {
+			display: block;
+			text-decoration: none;
+		}
+
+		.current_page_item > a,
+		.current-menu-item > a,
+		.current_page_ancestor > a {
 		}
 	}
-	li {
-		list-style-type: none;
-		display: inline-block;
-		position: relative;
-		margin: 0 0.85rem;
 
-		&:hover > a,
-		&.focus > a {
-		}
-	}
-	a {
-		display: block;
-		text-decoration: none;
-	}
-
-	.current_page_item > a,
-	.current-menu-item > a,
-	.current_page_ancestor > a {
-	}
-}
-
-/* Small menu. */
-.menu-toggle,
-.main-navigation.toggled ul {
-	display: block;
-}
-
-@media screen and (min-width: 37.5em) {
-	.menu-toggle {
-		display: none;
-	}
-	.main-navigation ul {
+	/* Small menu. */
+	.menu-toggle,
+	.main-navigation.toggled ul {
 		display: block;
 	}
-}
 
+	// @media screen and (min-width: 37.5em) {
+	// 	.menu-toggle {
+	// 		display: none;
+	// 	}
+	// 	.main-navigation ul {
+	// 		display: block;
+	// 	}
+	// }
+}
 .comment-navigation,
 .posts-navigation,
 .post-navigation,
 .pages-navigation {
-	border-top: 1px solid rgba(0,0,0,0.2);
-	padding: 0.5rem 0 0;
 	margin: 1rem 0;
+	padding: 0.5rem 0 0;
+	position: relative;
+
+	&:before {
+		content: '';
+		display: block;
+		z-index: 1;
+		position: absolute;
+		left:0; right: 0; top: 0;
+		height: 1px;
+		width: 100%;
+		border-top: 1px solid white;
+		border-color: inherit;
+
+		@include opacity(0.5);
+	}
 
 	.site-main & {
 		margin: 0 0 1.5em;
@@ -120,3 +138,35 @@ nav {
 		@include transition(1s color ease);
 	}
 }
+	.social-media {
+		display: inline-block;
+		vertical-align: top;
+		position: relative;
+		margin: 0;
+		padding: 0;
+
+		.social-media-item {
+			display: inline-block;
+			margin: 0;
+			padding: 0 0.15rem;
+			float: none;
+
+			.social-media-link {
+				svg {
+					display: inline-block;
+					height: 1.25rem;
+					width: 1.25rem;
+					fill: inherit;
+					text-align: baseline;
+					@include transition(1s opacity);
+				}
+
+				&:hover {
+					svg {
+						@include opacity(0.5);
+						@include transition(0.2s opacity);
+					}
+				}
+			}
+		}
+	}
