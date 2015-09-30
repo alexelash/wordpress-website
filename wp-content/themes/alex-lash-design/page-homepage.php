@@ -49,7 +49,9 @@ get_header(); ?>
 			<?php 
 				while ( $projects->have_posts() ) : $projects->the_post();
 					$project_name = $post -> post_name;
-					echo "<img id='$project_name' class='loader-image' src=''>";
+					echo "<div id='$project_name' class='preview-image'>";
+						echo "<img id='$project_name' class='loader-image' src=''>";
+					echo "</div>";
 				endwhile; wp_reset_query(); 
 			?>
 		</div>

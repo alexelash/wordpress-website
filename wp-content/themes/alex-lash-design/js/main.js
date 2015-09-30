@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	if ($(window).width()>680) initFullscrnHover();
+	if ($('.hamburglar-button').is(':visible')) mobileMenu();
 });
 
 $(window).load(function(){
@@ -22,11 +23,12 @@ function initFullscrnHover() {
 				'fill': txtcolor
 			});
 			$('.preview img#'+$(this).attr('id')).attr('src', bgimg);
-			$('.preview').css({
+				$('.preview-image#'+$(this).attr('id')).addClass('showPreview')	.css({
 				'background-position': bglocation,
 				'background-size': bgsize
 			});
-			imagesLoaded($('.preview img.loader-image#'+$(this).attr('id')), $('.preview'), bgimg)
+
+			imagesLoaded($('img.loader-image#'+$(this).attr('id')), $('.preview-image#'+$(this).attr('id')), bgimg)
 		});
 		$(this).mouseleave(function() {
 			$('html').css({
@@ -34,36 +36,29 @@ function initFullscrnHover() {
 				'color': origtxtcolor,
 				'fill': origtxtcolor
 			});	
-			$('.preview img').attr('src', ''),
-			$('.preview').removeClass('isLoaded').css({
+			$('.preview-image#'+$(this).attr('id')).removeClass('showPreview').css({
 				'background-image': 'url()',
 				'background-image': '',
 				'background-position': ''
-			})
+			});
 		});
 	});
-	// ajaxifyThumbs();
 }
 
 function imagesLoaded(elem, container, url) {
 	container.imagesLoaded()
-  .always( function( instance ) {
-    // console.log('all images loaded');
-  })
-  .done( function( instance ) {
-    // console.log('all images successfully loaded');
-  })
-  .fail( function() {
-    // console.log('all images loaded, at least one is broken');
-  })
   .progress( function( instance, image ) {
   	if ($('body').hasClass('home')) {
-  		$(image.img).closest(container).css({
+  		container.css({
 				'background-image': 'url('+url+')',
 			});
   	};
-		if ($(image.img).closest(container).css('background-url')!='') container.addClass('isLoaded');
-    // var result = image.isLoaded ? 'loaded' : 'broken';
-    // console.log( 'image is ' + result + ' for ' + image.img.src );
+		if (container.css('background-url')!='') container.addClass('isLoaded');
   });
 }
+function mobileMenu() {
+	$('.hamburglar-button').bind('tap',function(){
+		$('body').toggleClass('openMenu');
+	});	
+}
+

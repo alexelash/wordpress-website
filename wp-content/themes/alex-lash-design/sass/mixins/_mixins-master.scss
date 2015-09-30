@@ -94,3 +94,19 @@
   -webkit-transform-origin: $origin;
           transform-origin: $origin;
 }
+
+// Media Queries
+$small-width: 33.750em;
+$med-width: 48.438em;
+
+@mixin desktop {
+  @media (min-width: #{$small-width}) {
+    @content;
+  }
+}
+
+@mixin med-desktop {
+  @media (min-width: #{$med-width}) {
+    @content;
+  }
+}
