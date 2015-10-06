@@ -30,7 +30,11 @@
 // Projects
 body.page-child,
 .page-template-default {
-	padding: 2rem;
+	padding: 1rem;
+
+  @include med-desktop { 
+	  padding: 2rem;
+	}
 }
 .entry-header {
 	position: relative;

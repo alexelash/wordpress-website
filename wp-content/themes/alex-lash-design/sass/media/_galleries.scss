@@ -23,6 +23,10 @@
 	position: relative;
 	margin: 3rem 0;
 
+	@include med-desktop {
+		margin: 1rem 0;
+	}
+
 	&:after {
 		content: '';
 		display: block;

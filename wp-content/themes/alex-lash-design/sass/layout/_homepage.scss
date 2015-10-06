@@ -48,10 +48,14 @@ html {
 
 			ul.projects {
 				list-style-type: none;
-				margin: 0 0 0 1.65rem;
+				margin: 0 0 0 0.75rem;
 				padding-left: 0;
 				// z-index: 999;
 				position: relative;
+
+				@include med-desktop { 
+					margin: 0 0 0 1.65rem;
+				}
 
 				li.project {
 					margin: 0;
