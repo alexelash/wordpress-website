@@ -9,6 +9,18 @@
 	text-transform: uppercase;
 	letter-spacing: 1px;
 
+	a {
+		svg {
+			@include transition(1s stroke);
+		}
+		&:hover {
+			svg {
+			stroke: white;
+
+			}
+		}
+	}
+
 	.website-link {
 		display: block;
 		padding-top: 0.5rem;
@@ -29,11 +41,12 @@
 			border-top: 1px solid white;
 			border-color: inherit;
 
-			@include opacity(0.5);
+			@include opacity(0.35);
 		}
 
 		&:hover {
 			stroke: white;
+			border-color: inherit; 
 		}
 	}
 

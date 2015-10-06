@@ -15,8 +15,10 @@
 			$page_color = get_field('page_color',$post->ID);
 			$text_color = get_field('text_color',$post->ID);
 			$featured_img = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ),'full')[0];
+			$featured_img_location = get_posts(array('p' => get_post_thumbnail_id( $post->ID ), 'post_type' => 'attachment'))[0]->post_content;
+			$featured_img_size = get_posts(array('p' => get_post_thumbnail_id( $post->ID ), 'post_type' => 'attachment'))[0]->post_excerpt;
 
-			echo "<div class='entry-header-container' style='background-image: url($featured_img);'>";
+			echo "<div class='entry-header-container' style='background-image: url($featured_img); background-position: $featured_img_location; background-size: $featured_img_size; '>";
 				echo "<div class='entry-title-container'>";
 					echo "<h2 class='entry-title'>$project_title</h2>";
 					echo "<h3 class='entry-subtitle'>$project_subtitle</h3>";

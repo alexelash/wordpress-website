@@ -5,6 +5,7 @@
 
 	.site-title {
 		@include transition(color 1s, opacity 1s);
+		z-index: 9999;
 
 		.openMenu & {
 			position: fixed;
