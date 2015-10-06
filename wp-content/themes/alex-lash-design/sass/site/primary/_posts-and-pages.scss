@@ -28,35 +28,42 @@
 }
 
 // Projects
-body.page-child {
+body.page-child,
+.page-template-default {
 	padding: 2rem;
+}
+.entry-header {
+	position: relative;
+	height: 92vh;
+	width: 100%;
+	display: block;
+	overflow: hidden;
+	background-color: rgba(0,0,0,0.1);
 
-	.entry-header {
-		position: relative;
-		height: 92vh;
-		width: 100%;
-		display: block;
-		overflow: hidden;
-		background-color: rgba(0,0,0,0.1);
+	.entry-title-container {
+		position: absolute;
+		left: 1rem;
+		bottom: 1rem;
 
-		.entry-title-container {
-			position: absolute;
-			left: 1rem;
-			bottom: 1rem;
-
-			.entry-title,
-			.entry-subtitle {
-				text-shadow: 	0px 1px 1px rgba(0,0,0,0.8), 
-											2px 2px 5px rgba(0,0,0,0.5)
-			}
+		.entry-title,
+		.entry-subtitle {
+			text-shadow: 	0px 1px 1px rgba(0,0,0,0.8), 
+										2px 2px 5px rgba(0,0,0,0.5)
 		}
-
+	}
+	.entry-header-container {
+		height: 95%;
+		margin-top: 5%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: top center;
+	}
+}
+.page-template-default {
+	.entry-header {
 		.entry-header-container {
-			height: 95%;
-			margin-top: 5%;
-			background-size: cover;
-			background-repeat: no-repeat;
-			background-position: top center;
+			height: 100%;
+			margin-top: 0!important;
 		}
 	}
 }

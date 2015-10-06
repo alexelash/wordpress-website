@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	if ($(window).width()>680) initFullscrnHover();
-	if ($('.hamburglar-button').is(':visible')) mobileMenu();
+	mobileMenu();
 });
 
 $(window).load(function(){

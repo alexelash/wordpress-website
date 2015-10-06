@@ -21,7 +21,7 @@
 	vertical-align: top;
 	// overflow: hidden;
 	position: relative;
-	margin: 3rem;
+	margin: 3rem 0;
 
 	&:after {
 		content: '';
@@ -79,6 +79,7 @@
 	background-repeat:no-repeat;
 	@include opacity(0);
 	@include transition(1s opacity);
+	overflow: hidden;
 	// position:relative;
 	z-index: -1;
 

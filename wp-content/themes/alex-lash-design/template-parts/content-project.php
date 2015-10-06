@@ -13,6 +13,7 @@
 			$project_title = the_title(NULL,NULL,false);
 			$project_subtitle = get_field('subtitle',$post->ID);
 			$page_color = get_field('page_color',$post->ID);
+			$text_color = get_field('text_color',$post->ID);
 			$featured_img = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ),'full')[0];
 
 			echo "<div class='entry-header-container' style='background-image: url($featured_img);'>";
@@ -132,10 +133,26 @@
 			<?php 
 				echo "<a class='page-navigation nav-previous' href='";
 					siblings('before');
-				echo "'>Previous</a>";
+				echo "'>";
+				?>
+				<button class='arrow-button'>
+					<div class="arrow-line arrow-a"></div>
+					<div class="arrow-line arrow-c"></div>
+					<div class="arrow-line arrow-b"></div>
+				</button>
+				<?php
+				echo "Previous</a>";
 				echo "<a class='page-navigation nav-next' href='";
 					siblings('after');
-				echo "'>Next</a>";
+				echo "'>Next";
+				?>
+				<button class='arrow-button'>
+					<div class="arrow-line arrow-a"></div>
+					<div class="arrow-line arrow-c"></div>
+					<div class="arrow-line arrow-b"></div>
+				</button>
+				<?php
+				echo "</a>";
 				//edit_post_link( esc_html__( 'Edit', 'alex-lash-design' ), '<span class="edit-link">', '</span>' ); 
 			?>
 		</nav>

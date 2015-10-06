@@ -17,33 +17,6 @@ body {
 	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
   padding: 12rem 2rem 2rem 3.5rem;
 }
-
-.site-header {
-	position: absolute;
-	top: 3rem; right: 3rem; left: 3rem;
-	z-index: 999;
-
-	.site-title {
-
-		.openMenu & {
-			position: fixed;
-		}
-
-		.logo {
-			height: 6.5rem;
-			width: 6.5rem;
-	    stroke: transparent;
-	    border-color: transparent;
-
-	    .openMenu & {
-	    	fill: #222;
-		    border-color: #222;
-		    color: #222;
-		    @include opacity(1);
-			}
-		}
-	}
-}
 .external-link {
 	stroke: inherit;
 	stroke-width: 20;
@@ -55,8 +28,6 @@ body {
 	.entry-header-container {
 		height: 80%;
 		top: 20%;
-	
-
 		.entry-title-container {
 			position: absolute;
 			display: inline-block;
@@ -103,9 +74,7 @@ body {
 				width: 20%;
 				display: inline-block;
 			}
-
 		}
-
 		.entry-description {
 			display: block;
 			max-width: none;
@@ -115,17 +84,16 @@ body {
 			margin: 0;
 			padding: 0;
 			margin-bottom: 2rem;
+		
+			@include med-desktop {
+				width:75%;
+				max-width: 45rem;
+				display: inline-block;
+				margin-bottom: 0;
+				margin-right: 5%;
+				padding-left: 1rem;
+			}
 		}
-
-		@include med-desktop {
-			width:75%;
-			max-width: 45rem;
-			display: inline-block;
-			margin-bottom: 0;
-			margin-right: 5%;
-			padding-left: 1rem;
-		}
-
 	}
 }
 
