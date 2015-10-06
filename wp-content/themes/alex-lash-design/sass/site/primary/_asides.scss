@@ -11,7 +11,7 @@
 
 	a {
 		svg {
-			@include transition(1s stroke);
+			@include transition(stroke 1s);
 		}
 		&:hover {
 			svg {
@@ -27,7 +27,7 @@
 		position: relative;
 
 		svg {
-			@include transition(1s stroke);
+			@include transition(stroke 1s);
 		}
 	
 		&:before {

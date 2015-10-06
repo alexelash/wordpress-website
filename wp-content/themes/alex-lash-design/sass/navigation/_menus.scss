@@ -54,7 +54,7 @@
 		color: inherit;
 		@include opacity(1);
 		z-index: 999999;
-		@include transition(1s);
+		// @include transition(all 1s);
 
 		.openMenu & {
 			z-index: 999999;
