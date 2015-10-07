@@ -37,8 +37,12 @@
 	display: block;
 	position: absolute;
 	right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+	top: 0;
+
+  @include desktop {
+	  top: 50%;
+	  transform: translateY(-50%);
+  }
 
   .openMenu & {	
     top: 0;
@@ -64,8 +68,8 @@
 			z-index: 999999;
 			transform: translate3d(0, 0, 0);
 			position: fixed;
-			right: 3.15rem;
-			top: 6.25rem;
+			right: 2rem;
+			top: 3rem;
 		}
 		&:hover {
 			color: white;
@@ -88,7 +92,7 @@
 			margin: 5px 0;
 			@include transform(rotate(0deg));
 			@include opacity(0.5);
-			@include transition(background-color 0.15s, width 0.25s, margin 0.5s, transform 1s);
+			@include transition(all 1s);
 
 			.openMenu & {
 				background-color: #222!important;
@@ -96,24 +100,28 @@
 			}
 		}
 		.hamburglar-a {
-			@include transition(margin 0.15s, transform 0.15s);
+			// -webkit-transition: -webkit-transform 1s ease;
+			// @include transition(margin 0.15s, transform 0.15s);
+			
 			.openMenu & {
 				width: 2rem;
 				margin: 0;
 				@include transform(rotate(45deg));
-				@include transition(margin 0.05s, transform 0.25s);
+				// @include transition(margin 0.05s, transform 0.25s);
 			}
 		}
 		.hamburglar-b {
 			width: 1.75rem;
-			@include transition(margin 0.05s, height 0s);
+			// @include transition(margin 0.05s, height 0s);
+			
 			.openMenu & {
 				margin: 0;
 				height: 0;
 			}
 		}
 		.hamburglar-c {
-			@include transition(margin 0.05s, height 0s);
+			// @include transition(margin 0.05s, height 0s);
+			
 			.openMenu & {
 				margin: 0;
 				height: 0;
@@ -121,13 +129,14 @@
 		}
 		.hamburglar-d {
 			width: 1.75rem;
-			@include transition(margin 0.15s, transform 0.15s);
+			// @include transition(margin 0.15s, transform 0.15s);
+			
 			.openMenu & {
 				width: 2rem;
 				margin: 0;
 				margin-top:-2px;
 				@include transform(rotate(-45deg));
-				@include transition(margin 0.05s, transform 0.25s, width 0s);
+				// @include transition(margin 0.05s, transform 0.25s, width 0s);
 			}
 		}
   }
@@ -398,11 +407,16 @@
 		.social-media-link {
 			svg {
 				display: inline-block;
-				height: 1.25rem;
-				width: 1.25rem;
 				fill: inherit;
+				height: 1.75rem;
+				width: 1.75rem;
 				text-align: baseline;
 				@include transition(1s opacity);
+
+				@include desktop {
+					height: 1.25rem;
+					width: 1.25rem;
+				}
 			}
 
 			&:hover {

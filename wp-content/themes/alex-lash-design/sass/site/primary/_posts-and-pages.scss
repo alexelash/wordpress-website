@@ -44,7 +44,7 @@ body.page-child,
 	overflow: hidden;
 	background-color: rgba(0,0,0,0.1);
 
-	@include med-desktop { 
+	@include desktop { 
 		height: 92vh;
 	}
 	
@@ -80,4 +80,8 @@ body.page-child,
 			margin-top: 0!important;
 		}
 	}
+}
+.entry-description {
+	max-width: 60rem;
+	margin: 0 auto;
 }

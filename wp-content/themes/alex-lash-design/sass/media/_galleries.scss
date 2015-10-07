@@ -1,7 +1,11 @@
 .text_block {
-	margin: 4rem auto;
 	max-width: 45rem;
-	width: 50%;
+	margin: 2rem auto;
+
+	@include desktop {
+		margin: 4rem auto;
+		width: 50%;
+	}
 	
 	p {
 	}
@@ -21,10 +25,10 @@
 	vertical-align: top;
 	// overflow: hidden;
 	position: relative;
-	margin: 3rem 0;
+	margin: 1rem 0;
 
-	@include med-desktop {
-		margin: 1rem 0;
+	@include desktop {
+		margin: 3rem 0;
 	}
 
 	&:after {

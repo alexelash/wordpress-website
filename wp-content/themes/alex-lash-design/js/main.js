@@ -2,6 +2,9 @@ $(document).ready(function(){
 	if ($(window).width()>680) initFullscrnHover();
 	mobileMenu();
 });
+$(window).on('resize', function() {
+	if ($('body').hasClass('openMenu') && $(window).width()>680) $('body').removeClass('openMenu')
+});
 
 $(window).load(function(){
 	imagesLoaded($('.gallery .image-container img.loader-image'), $('.gallery .image-container'));

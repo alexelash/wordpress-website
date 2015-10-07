@@ -63,7 +63,13 @@ body {
 	display: block;
 
 	.entry-information {
-		margin: 4rem 0;
+		margin: 0.5rem 0 2rem;
+
+		@include desktop {
+			.entry-information {
+				margin: 4rem 0;
+			}
+		}
 		
 		aside {
 			display: block;
