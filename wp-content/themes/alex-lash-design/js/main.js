@@ -1,11 +1,11 @@
 $(document).ready(function(){
 	$('.page_item a').on('click',function(e){
 		e.preventDefault();
-		console.log('hello');
+		// console.log('hello');
 	})
 	if ($(window).width()>680) initFullscrnHover();
 	mobileMenu();
-	animsition();
+	// animsition();
 });
 $(window).on('resize', function() {
 	if ($('body').hasClass('openMenu') && $(window).width()>680) $('body').removeClass('openMenu')
