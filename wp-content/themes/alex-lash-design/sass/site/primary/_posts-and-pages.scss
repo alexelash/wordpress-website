@@ -36,6 +36,17 @@ body.page-child,
 	  padding: 2rem;
 	}
 }
+.entry-image {
+	height: auto;
+	margin: 0 auto;
+	padding-top: 10rem;
+
+	@include med-desktop { 
+		width: 70%;
+		max-width: 45rem;
+		padding-top: 9rem;
+	}
+}
 .entry-header {
 	position: relative;
 	height: 45vh;
@@ -60,14 +71,22 @@ body.page-child,
 			left: 1rem;
 			bottom: 1rem;
 
-			.entry-title,
+			.entry-title {
+				font-size: 1.25rem;
+				text-shadow: 	0px 1px 1px rgba(0,0,0,0.8), 
+											2px 2px 5px rgba(0,0,0,0.5);
+
+				@include med-desktop { 
+					font-size: 1.75rem;
+				}
+			}
 			.entry-subtitle {
 				font-size: 1.25rem;
 				text-shadow: 	0px 1px 1px rgba(0,0,0,0.8), 
 											2px 2px 5px rgba(0,0,0,0.5);
 
 				@include med-desktop { 
-					font-size: auto;
+					font-size: 1.35rem;
 				}
 			}
 		}

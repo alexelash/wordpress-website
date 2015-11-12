@@ -34,16 +34,15 @@ get_header(); ?>
 				$featured_img = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ),'full')[0];
 				$featured_img_location = get_posts(array('p' => get_post_thumbnail_id( $post->ID ), 'post_type' => 'attachment'))[0]->post_content;
 				$featured_img_size = get_posts(array('p' => get_post_thumbnail_id( $post->ID ), 'post_type' => 'attachment'))[0]->post_excerpt;
-				// pp($featured_img_size);
 
-				echo "<li id='$project_name' class='project'>";
+				echo "<li id='$project_name' class='project page_item'>";
 					echo "<a href='$page_link' class='project-link' data-bgimg='$featured_img' data-bgcolor='$page_color' data-textcolor='$text_color' data-bglocation='$featured_img_location' data-bgsize='$featured_img_size'>";
 						echo "<h2 class='project-title'>$title</h2>";
 						echo "<h3 class='project-subtitle'>$subtitle</h2>";
 					echo "</a>";
 				echo "</li>";
 
-			endwhile; ?>
+			endwhile; wp_reset_query(); ?>
 		</ul>
 		<div class='preview'>
 			<?php 

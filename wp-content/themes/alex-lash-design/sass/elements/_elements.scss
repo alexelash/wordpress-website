@@ -15,7 +15,11 @@ html {
 
 body {
 	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
-  padding: 12rem 2rem 2rem 3.5rem;
+  padding: 11rem 2rem 2rem 2rem;
+  
+	@include med-desktop {
+	  padding: 12rem 2rem 2rem 3.5rem;
+	};
 }
 .external-link {
 	stroke: inherit;
@@ -117,7 +121,7 @@ hr {
 	background-color: $color__background-hr;
 	border: 0;
 	height: 1px;
-	margin-bottom: 1.5em;
+	margin-bottom: 0.75rem;
 }
 
 @import "lists";

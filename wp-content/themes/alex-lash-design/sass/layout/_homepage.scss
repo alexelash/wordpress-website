@@ -48,9 +48,9 @@ html {
 
 			ul.projects {
 				list-style-type: none;
-				margin: 0 0 0 0.75rem;
+				margin: 0 0 0 0;
 				padding-left: 0;
-				// z-index: 999;
+				z-index: 999;
 				position: relative;
 
 				@include med-desktop { 
@@ -91,21 +91,23 @@ html {
 						margin: 0;
 						padding: 0;
 					}
+					
+					@include med-desktop {
+						&:hover {
+							padding-left: 1rem;
+							color: inherit;
+							text-shadow: 	1px 1px 1px #222, 
+		               					2 px 3px 5px rgba(0,0,0,0.35); 
+							@include opacity(1);
+							@include transition(1s opacity, 1s color, 0.5s padding-left);
 
-					&:hover {
-						padding-left: 1rem;
-						color: inherit;
-						text-shadow: 	1px 1px 1px #222, 
-	               					2 px 3px 5px rgba(0,0,0,0.35); 
-						@include opacity(1);
-						@include transition(1s opacity, 1s color, 0.5s padding-left);
-
-						&:before {
-							height: 3.1rem;
-							background-color: rgba(255,255,255,0.5);
-							bottom: 0; top: 0;
-						}
-					}	
+							&:before {
+								height: 3.1rem;
+								background-color: rgba(255,255,255,0.5);
+								bottom: 0; top: 0;
+							}
+						}	
+					}
 				}
 			}
 		}

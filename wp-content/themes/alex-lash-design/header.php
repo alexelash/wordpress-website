@@ -15,25 +15,35 @@
 	// Global variables
 		$page_color = get_field('page_color');
 		$text_color = get_field('text_color');
+		$description = get_field('description_of_page', 'option')
  	?>
 
 <html <?php language_attributes(); ?> style="background-color: <?php echo $page_color ?>; color: <?php echo $text_color ?>; fill: <?php echo $text_color ?>; stroke: <?php echo $text_color ?>; border-color: <?php echo $text_color ?>; " data-origcolor="<?php echo $page_color ?>" data-origtextcolor="<?php echo $text_color ?>">
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="profile" href="http://gmpg.org/xfn/11">
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-<link rel="icon" type="image/png" href="<?php echo site_url(); ?>/favicon.png">
-<!-- Typography.com, Sentinel -->
-<link rel="stylesheet" type="text/css" href="//cloud.typography.com/6837574/768848/css/fonts.css" />
-<?php wp_head(); ?>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="description" content="<?php echo $description ?>" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+	<link rel="icon" type="image/png" href="<?php echo site_url(); ?>/favicon.png">
+	<!-- Typography.com, Sentinel -->
+	<link rel="stylesheet" type="text/css" href="//cloud.typography.com/6837574/768848/css/fonts.css" />
+	<?php wp_head(); ?>
+	<script>
+	  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  // ga('create', 'UA-64801895-1', 'auto');
+	  // ga('send', 'pageview');
+	</script>
 </head>
 
 <body <?php body_class(); ?>>
-	<!-- <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'alex-lash-design' ); ?></a> -->
 
 	<header class="site-header" role="banner">
-		<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php get_template_part('SVGs/inline', 'logo.svg'); ?></a></h1>
+		<h1 class="site-title page_item"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php get_template_part('SVGs/inline', 'logo.svg'); ?></a></h1>
 		<div class='top-right'>
 			<button class='hamburglar-button'>
 				<div class="hamburglar-line hamburglar-a" style="background-color: <?php echo $text_color?>"></div>
@@ -59,7 +69,10 @@
 							if ($type=='pinterest') $icon = '<svg viewBox="0 0 512 512"><path d="M266.6 76.5c-100.2 0-150.7 71.8-150.7 131.7 0 36.3 13.7 68.5 43.2 80.6 4.8 2 9.2 0.1 10.6-5.3 1-3.7 3.3-13 4.3-16.9 1.4-5.3 0.9-7.1-3-11.8 -8.5-10-13.9-23-13.9-41.3 0-53.3 39.9-101 103.8-101 56.6 0 87.7 34.6 87.7 80.8 0 60.8-26.9 112.1-66.8 112.1 -22.1 0-38.6-18.2-33.3-40.6 6.3-26.7 18.6-55.5 18.6-74.8 0-17.3-9.3-31.7-28.4-31.7 -22.5 0-40.7 23.3-40.7 54.6 0 19.9 6.7 33.4 6.7 33.4s-23.1 97.8-27.1 114.9c-8.1 34.1-1.2 75.9-0.6 80.1 0.3 2.5 3.6 3.1 5 1.2 2.1-2.7 28.9-35.9 38.1-69 2.6-9.4 14.8-58 14.8-58 7.3 14 28.7 26.3 51.5 26.3 67.8 0 113.8-61.8 113.8-144.5C400.1 134.7 347.1 76.5 266.6 76.5z"/></svg><!--[if lt IE 9]><em>Pinterest</em><![endif]-->';
 							if ($type=='email') 		$icon = '<svg viewBox="0 0 512 512"><path d="M101.3 141.6v228.9h0.3 308.4 0.8V141.6H101.3zM375.7 167.8l-119.7 91.5 -119.6-91.5H375.7zM127.6 194.1l64.1 49.1 -64.1 64.1V194.1zM127.8 344.2l84.9-84.9 43.2 33.1 43-32.9 84.7 84.7L127.8 344.2 127.8 344.2zM384.4 307.8l-64.4-64.4 64.4-49.3V307.8z"/></svg><!--[if lt IE 9]><em>Email</em><![endif]-->';
 
-							echo "<li class='$type social-media-item'><a class='social-media-link' href='$link' target='_blank' title='$displayTitle'>$icon</a></li>";
+							echo "<li class='$type social-media-item'>";
+								if ($type=='email') echo "<a class='social-media-link' href='mailto:$link' title='$displayTitle'>$icon</a>";
+								else echo "<a class='social-media-link' href='$link' target='_blank' title='$displayTitle'>$icon</a>";
+							echo "</li>";
 	   				endwhile;
 	    			echo "</ul>";
 	    		} 

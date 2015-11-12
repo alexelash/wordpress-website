@@ -7,7 +7,7 @@
  * @package Alex Lash Design
  */
 if( function_exists('acf_add_options_page') ) {
-	acf_add_options_page( $page );
+	acf_add_options_page( );
 }
 function pp($var) { 
 	print '<pre>'; print_r($var); print '</pre>'; 
@@ -40,7 +40,7 @@ function siblings($link) {
 }
 
 
-$page = array(
+$the_page = array(
 	/* (string) The title displayed on the options page. Required. */
 	'page_title' => 'Global Variables',
 	
@@ -55,10 +55,10 @@ $page = array(
 	Read more about capability here: http://codex.wordpress.org/Roles_and_Capabilities */
 	'capability' => 'edit_posts',
 	
-	/* (int|string) The position in the menu order this menu should appear. 
-	WARNING: if two menu items use the same position attribute, one of the items may be overwritten so that only one item displays!
-	Risk of conflict can be reduced by using decimal instead of integer values, e.g. '63.3' instead of 63 (must use quotes).
-	Defaults to bottom of utility menu items */
+	//  (int|string) The position in the menu order this menu should appear. 
+	// WARNING: if two menu items use the same position attribute, one of the items may be overwritten so that only one item displays!
+	// Risk of conflict can be reduced by using decimal instead of integer values, e.g. '63.3' instead of 63 (must use quotes).
+	// Defaults to bottom of utility menu items 
 	'position' => false,
 	
 	/* (string) The slug of another WP admin page. if set, this will become a child page. */

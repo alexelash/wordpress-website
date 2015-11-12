@@ -1,14 +1,16 @@
 $(document).ready(function(){
+	$('.page_item a').on('click',function(e){
+		e.preventDefault();
+		console.log('hello');
+	})
 	if ($(window).width()>680) initFullscrnHover();
 	mobileMenu();
+	animsition();
 });
 $(window).on('resize', function() {
 	if ($('body').hasClass('openMenu') && $(window).width()>680) $('body').removeClass('openMenu')
 });
 
-$(window).load(function(){
-	imagesLoaded($('.gallery .image-container img.loader-image'), $('.gallery .image-container'));
-});
 function initFullscrnHover() {
 	$('.project').each(function() {
 		var origbgcolor = $('html').data('origcolor'),
@@ -65,3 +67,37 @@ function mobileMenu() {
 	});	
 }
 
+function animsition() {
+	$("main").animsition({
+		inClass: 'fade-in-up-sm',
+		outClass: 'fade-in-up-sm',
+		inDuration: 1500,
+		outDuration: 800,
+		linkElement: '.page_item a',
+		// e.g. linkElement: 'a:not([target="_blank"]):not([href^=#])'
+		loading: true,			
+		loadingParentElement: 'body', //animsition wrapper element
+		loadingClass: 'animsition-loading',
+		loadingInner: '', // e.g '<img src="loading.svg" />'
+		timeout: false,
+		timeoutCountdown: 5000,
+		onLoadEvent: true,
+		browser: [ 'animation-duration', '-webkit-animation-duration'],
+		// "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
+		// The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
+		overlay: false,
+		overlayClass: 'animsition-overlay-slide',
+		overlayParentElement : 'body',
+		transition: function(url){ 
+			window.location.href = url; 
+			console.log(url);	
+		}
+	});
+	$('main').on('animsition.inEnd', function(){
+		imagesLoaded($('.gallery .image-container img.loader-image'), $('.gallery .image-container'));
+	})
+	// $('.foo').on('animsition.inStart', function(){
+		
+	// })
+	// $('.foo').animsition('out', $elem, url);
+}

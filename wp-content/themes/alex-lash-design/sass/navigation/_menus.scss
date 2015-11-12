@@ -40,7 +40,7 @@
 	top: 0;
 
   @include desktop {
-	  top: 50%;
+	  top: 40%;
 	  transform: translateY(-50%);
   }
 
@@ -58,25 +58,21 @@
 	}
 
   .hamburglar-button {
-		display: inline-block;
+		display: block;
 		color: inherit;
-		@include opacity(1);
 		z-index: 999999;
-		// @include transition(all 1s);
+		@include opacity(1);
 
 		.openMenu & {
-			z-index: 999999;
-			transform: translate3d(0, 0, 0);
 			position: fixed;
 			right: 2rem;
 			top: 3rem;
 		}
 		&:hover {
-			color: white;
-			@include opacity(1);
-
 			.hamburglar-line {
 				margin: 6px 0;
+				color: white;
+				@include opacity(1);
 			}
 		}
 
@@ -86,13 +82,16 @@
 		}
 
 		.hamburglar-line {
+			display: block;
 			height: 2px;
 			width: 2rem;
 			background-color: inherit;
 			margin: 5px 0;
+	    position: relative;
+	    overflow: hidden;
 			@include transform(rotate(0deg));
 			@include opacity(0.5);
-			@include transition(all 1s);
+			@include transition(opacity 0.25s, margin 0.25s);
 
 			.openMenu & {
 				background-color: #222!important;
@@ -100,19 +99,19 @@
 			}
 		}
 		.hamburglar-a {
-			// -webkit-transition: -webkit-transform 1s ease;
-			// @include transition(margin 0.15s, transform 0.15s);
+			@include transition(margin 0.15s, transform 0.15s);
 			
 			.openMenu & {
 				width: 2rem;
 				margin: 0;
 				@include transform(rotate(45deg));
-				// @include transition(margin 0.05s, transform 0.25s);
+				@include transition(margin 0.05s, transform 0.25s);
+
 			}
 		}
 		.hamburglar-b {
 			width: 1.75rem;
-			// @include transition(margin 0.05s, height 0s);
+			@include transition(margin 0.05s, height 0s);
 			
 			.openMenu & {
 				margin: 0;
@@ -120,7 +119,7 @@
 			}
 		}
 		.hamburglar-c {
-			// @include transition(margin 0.05s, height 0s);
+			@include transition(margin 0.05s, height 0s);
 			
 			.openMenu & {
 				margin: 0;
@@ -129,14 +128,14 @@
 		}
 		.hamburglar-d {
 			width: 1.75rem;
-			// @include transition(margin 0.15s, transform 0.15s);
+			@include transition(margin 0.15s, transform 0.15s);
 			
 			.openMenu & {
 				width: 2rem;
 				margin: 0;
 				margin-top:-2px;
 				@include transform(rotate(-45deg));
-				// @include transition(margin 0.05s, transform 0.25s, width 0s);
+				@include transition(margin 0.05s, transform 0.25s, width 0s);
 			}
 		}
   }
@@ -265,7 +264,7 @@
 	font-family: $font__secondary;
 	text-transform: uppercase;
 	font-size: 0.65rem;
-	font-weight: 300;
+	font-weight: 500;
 	letter-spacing: 2px;
 	margin: 1rem 0;
 	padding: 0.5rem 0 0;
@@ -283,42 +282,46 @@
 		border-color: inherit;
 		@include opacity(0.5);
 	}
+	.nav-previous .arrow-button {
+		vertical-align: middle;
+		margin-bottom: 0.5rem;
+	}
 	.page-navigation {
 		&:hover {
-			& .arrow-line {
+			.arrow-line {
 				margin: 0;
 				height: 1px;
-				display: inline-block;
+				display: block!important;
 			}
 		}
 		&:hover {
-			& .arrow-a {
+			.arrow-a {
 				background-color: white;
 				width: 0.75rem;
-				margin-bottom: 0.5rem;
+				margin-bottom: 0.45rem;
+				background-color: white;
 				@include opacity(1);
 				@include transform(rotate(-45deg));
-				background-color: white;
 			}
 		}
 		&:hover {
 			.arrow-b {
+				background-color: white;
 				width: 2rem;
 				vertical-align: middle;
-				margin-left: -0.9rem;
-				margin-top: -0.05rem;
+				margin-top: -0.35rem;
+				margin-left: 0.15rem;
 				@include opacity(1);
-				background-color: white;
-			}
+			}	
 		}
 		&:hover {
 			.arrow-c {
+				background-color: white;
 				width: 0.75rem;
-				margin-left: -0.9rem;
-				margin-bottom: -0.15rem;
+				margin-left: 0;
+				margin-bottom: 0.05rem;
 				@include opacity(1);
 				@include transform(rotate(45deg));	
-				background-color: white;
 			}
 		}
 	}

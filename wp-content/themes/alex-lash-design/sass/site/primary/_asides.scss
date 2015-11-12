@@ -4,7 +4,7 @@
 }
 
 .entry-details {
-	font-weight: 100;
+	font-weight: 500;
 	font-size: 0.65rem;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -20,28 +20,12 @@
 			}
 		}
 	}
-
 	.website-link {
 		display: block;
-		padding-top: 0.5rem;
 		position: relative;
 
 		svg {
 			@include transition(stroke 1s);
-		}
-	
-		&:before {
-			content: '';
-			display: block;
-			z-index: 1;
-			position: absolute;
-			left:0; right: 0; top: 0;
-			height: 1px;
-			width: 100%;
-			border-top: 1px solid white;
-			border-color: inherit;
-
-			@include opacity(0.35);
 		}
 
 		&:hover {
@@ -57,13 +41,13 @@
 		width: 100%;
 
 		.credits-list-item {
-			margin-bottom: 0.5rem;
 
 			h4 {
 				display: inline-block;
 				text-align: left;
 				text-transform: none;
 				letter-spacing: 0;
+				margin-top: 0.5rem;
 			}
 
 			.col_right {
