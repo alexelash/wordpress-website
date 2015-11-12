@@ -5,6 +5,7 @@ $(document).ready(function(){
 	})
 	if ($(window).width()>680) initFullscrnHover();
 	mobileMenu();
+	imagesLoaded($('img.loader-image'), $('.image-container'), $('img.loader-image').attr('src'));
 	// animsition();
 });
 $(window).on('resize', function() {
